@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import Postcard from "./Postcard";
 
-export default function App() {
+export default function Home() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState([]);
@@ -44,7 +45,19 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="w-1/2 flex flex-col gap-10">
+      <div className="flex flex-col gap-4">
+        {posts.map((post) => {
+          return (
+            <Postcard
+              key={post._id}
+              title={post.title}
+              content={post.content}
+            ></Postcard>
+          );
+        })}
+      </div>
+
       <form className="flex flex-col" onSubmit={handleSubmit}>
         <input
           onChange={handleTitleInput}
@@ -62,18 +75,10 @@ export default function App() {
           placeholder="content"
           required
         ></input>
-        <button type="submit">submit</button>
+        <button type="submit" className="bg-white">
+          submit
+        </button>
       </form>
-      <ul>
-        {posts.map((post) => {
-          return (
-            <li key={post._id}>
-              <div>{post.title}</div>
-              <div>{post.content}</div>
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }
