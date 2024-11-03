@@ -1,6 +1,6 @@
 import { FaReact, FaJs, FaCss3Alt, FaHtml5 } from "react-icons/fa";
 import logo from "../assets/logo.png";
-import Tag from "../pages/homePage/TagButton";
+import Tag from "./TagButton";
 
 export default function Topbar() {
   return (
@@ -18,7 +18,7 @@ export default function Topbar() {
         </div>
       </div>
 
-      <div className="bg-gray-900 w-full h-14 flex items-center justify-center">
+      <div className="bg-gradient-to-tr from-gray-900 to-gray-800 w-full h-14 flex items-center justify-center">
         <div className="w-10/12 md:w-8/12 lg:w-1/2 flex gap-5 overflow-x-auto scroll-snap-x scrollbar-hide px-2 text-white">
           <Tag tag="JavaScript" icon={<FaJs className="text-yellow-400" />} />
           <Tag tag="CSS" icon={<FaCss3Alt className="text-blue-500" />} />

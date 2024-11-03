@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Postcard from "./Postcard";
 
-export default function Home() {
+export default function PageHome() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState([]);
@@ -43,19 +43,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className=" w-10/12 md:w-8/12 lg:w-1/2 mx-auto flex flex-col gap-10">
-      <div className="flex flex-col items-center gap-4">
-        {posts.map((post) => (
-          <Postcard
-            key={post._id}
-            title={post.title}
-            tags={["#ddd", "React"]}
-          />
-        ))}
-      </div>
-
+    <div className="w-10/12 md:w-8/12 lg:w-1/2 mx-auto flex flex-col gap-10">
+      <Postcard posts={posts} fetchPosts={fetchPosts}></Postcard>
       <form
-        className="flex flex-col gap-4 bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-lg shadow-md"
+        className="font-notosanskr flex flex-col gap-4 bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-lg shadow-md"
         onSubmit={handleSubmit}
       >
         <input
@@ -76,9 +67,10 @@ export default function Home() {
         />
         <button
           type="submit"
-          className="bg-white text-blue-600 p-2 rounded hover:bg-blue-100 transition duration-300"
+          className="relative overflow-hidden p-2 rounded bg-white text-blue-600 transition duration-300 group"
         >
-          게시글 등록
+          <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 transition duration-300 opacity-0 group-hover:opacity-100"></span>
+          <span className="relative z-10">Submit</span>
         </button>
       </form>
     </div>

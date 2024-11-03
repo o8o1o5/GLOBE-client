@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/homePage/Home";
+import PageHome from "./pages/PageHome/PageHome";
+import PagePost from "./pages/PagePost/PagePost";
 import Topbar from "./components/Topbar";
 
 export default function App() {
@@ -8,7 +9,8 @@ export default function App() {
       <Topbar></Topbar>
       <Router>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/" element={<PageHome></PageHome>}></Route>
+          <Route path="/post" element={<PagePost></PagePost>}></Route>
         </Routes>
       </Router>
     </div>
