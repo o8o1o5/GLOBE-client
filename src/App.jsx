@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PageHome from "./pages/PageHome/PageHome";
 import PagePost from "./pages/PagePost/PagePost";
-import Topbar from "./components/Topbar";
+import Nav from "./components/Nav/Nav";
 
 export default function App() {
   return (
-    <div className="bg-gradient-to-r from-blue-50 to-purple-50 flex flex-col items-center">
-      <Topbar></Topbar>
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-50">
+      <Nav></Nav>
       <Router>
         <Routes>
           <Route path="/" element={<PageHome></PageHome>}></Route>

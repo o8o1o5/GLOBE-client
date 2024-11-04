@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Postcard from "./Postcard";
+import PostPrev from "./PostPrev/PostPrev.jsx";
+import Search from "./Search/Search.jsx";
 
 export default function PageHome() {
   const [title, setTitle] = useState("");
@@ -43,8 +44,9 @@ export default function PageHome() {
   }, []);
 
   return (
-    <div className="w-10/12 md:w-8/12 lg:w-1/2 mx-auto flex flex-col gap-10">
-      <Postcard posts={posts} fetchPosts={fetchPosts}></Postcard>
+    <div className="lg:w-2/3 md:w-2/3 w-10/12 mx-auto flex flex-col gap-5">
+      <Search></Search>
+      <PostPrev posts={posts} fetchPosts={fetchPosts}></PostPrev>
       <form
         className="font-notosanskr flex flex-col gap-4 bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-lg shadow-md"
         onSubmit={handleSubmit}
