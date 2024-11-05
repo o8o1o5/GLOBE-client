@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import PostPrev from "./PostPrev/PostPrev.jsx";
 import Search from "./Search/Search.jsx";
+import LoginCard from "./LoginCard/LoginCard.jsx";
 
 export default function PageHome() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState([]);
+  const [searchedPosts, setSearchedPosts] = useState([]);
+  const [searchInputValue, setSearchInputValue] = useState("");
 
   const handleTitleInput = (e) => {
     setTitle(e.target.value);
@@ -43,10 +46,33 @@ export default function PageHome() {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    const debounceTimeout = setTimeout(async () => {
+      const filteredPosts = await fetch(
+        `http://localhost:5001/posts?search=${searchInputValue}`
+      );
+      const filteredPostsArray = await filteredPosts.json();
+      setSearchedPosts(filteredPostsArray);
+    }, 300);
+
+    return () => clearTimeout(debounceTimeout);
+  }, [searchInputValue]);
+
   return (
     <div className="lg:w-2/3 md:w-2/3 w-10/12 mx-auto flex flex-col gap-5">
-      <Search></Search>
-      <PostPrev posts={posts} fetchPosts={fetchPosts}></PostPrev>
+      <div className="flex flex-col lg:flex-row gap-5">
+        <div className="flex flex-col gap-5 grow">
+          <Search
+            value={searchInputValue}
+            setSearchInputValue={setSearchInputValue}
+          ></Search>
+          <PostPrev posts={searchedPosts} fetchPosts={fetchPosts}></PostPrev>
+        </div>
+        <div className="w-full lg:w-1/4">
+          <LoginCard></LoginCard>
+        </div>
+      </div>
+
       <form
         className="font-notosanskr flex flex-col gap-4 bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-lg shadow-md"
         onSubmit={handleSubmit}

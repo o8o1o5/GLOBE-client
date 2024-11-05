@@ -4,7 +4,7 @@ export default function PostPrev({ posts }) {
   if (posts.length === 0) return null;
 
   return (
-    <div className="w-full lg:w-9/12 flex flex-col bg-white p-4 border rounded-lg shadow-md">
+    <div className="w-full flex flex-col bg-white p-4 border rounded-lg shadow-md">
       {posts.map((post, i) => (
         <div key={post._id}>
           <PostPrevTitle
