@@ -41,6 +41,7 @@ export default function PageHome() {
     const response = await fetch(`${DOMAIN}/posts`);
     const postList = await response.json();
     setPosts(postList);
+    setSearchedPosts(postList);
   };
 
   useEffect(() => {
@@ -52,8 +53,8 @@ export default function PageHome() {
       const filteredPosts = await fetch(
         `${DOMAIN}/posts?search=${searchInputValue}`
       );
-      const filteredPostsArray = await filteredPosts.json();
-      setSearchedPosts(filteredPostsArray);
+      const filteredPostsJson = await filteredPosts.json();
+      setSearchedPosts(filteredPostsJson);
     }, 300);
 
     return () => clearTimeout(debounceTimeout);
