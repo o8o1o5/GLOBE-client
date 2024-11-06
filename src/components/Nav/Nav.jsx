@@ -9,7 +9,8 @@ export default function Nav() {
       <div className="h-20 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center shadow-lg">
         <div className="flex items-center w-10/12 md:w-2/3 lg:w-2/3">
           <NavLogo></NavLogo>
-          <NavUserInfo></NavUserInfo>
+
+          {/*<NavUserInfo></NavUserInfo>*/}
         </div>
       </div>
       <div className="bg-gradient-to-tr from-gray-900 to-gray-800 h-14 flex items-center justify-center">
