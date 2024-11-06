@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PostPrev from "./PostPrev/PostPrev.jsx";
 import Search from "./Search/Search.jsx";
 import LoginCard from "./LoginCard/LoginCard.jsx";
+import DOMAIN from "../../assets/resources/domain.js";
 
 export default function PageHome() {
   const [title, setTitle] = useState("");
@@ -21,7 +22,7 @@ export default function PageHome() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5001/posts", {
+    const response = await fetch(`${DOMAIN}/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,7 @@ export default function PageHome() {
   };
 
   const fetchPosts = async () => {
-    const response = await fetch("http://localhost:5001/posts");
+    const response = await fetch(`${DOMAIN}/posts`);
     const postList = await response.json();
     setPosts(postList);
   };
@@ -49,7 +50,7 @@ export default function PageHome() {
   useEffect(() => {
     const debounceTimeout = setTimeout(async () => {
       const filteredPosts = await fetch(
-        `http://localhost:5001/posts?search=${searchInputValue}`
+        `${DOMAIN}/posts?search=${searchInputValue}`
       );
       const filteredPostsArray = await filteredPosts.json();
       setSearchedPosts(filteredPostsArray);

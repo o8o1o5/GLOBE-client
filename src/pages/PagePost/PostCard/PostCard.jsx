@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import PostCardTitle from "./PostCardTitle";
 import PostCardContent from "./PostCardContent";
+import DOMAIN from "../../../assets/resources/domain";
 
 export default function PostCard() {
   const [post, setPost] = useState();
@@ -9,7 +10,7 @@ export default function PostCard() {
   const queryString = location.search;
 
   const fetchPosts = async () => {
-    const response = await fetch(`http://localhost:5001/posts${queryString}`);
+    const response = await fetch(`${DOMAIN}/posts${queryString}`);
     const post = await response.json();
     setPost(post);
   };
@@ -20,7 +21,7 @@ export default function PostCard() {
 
   const handleTrashClick = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5001/posts${queryString}`, {
+    const response = await fetch(`${DOMAIN}/posts${queryString}`, {
       method: "DELETE",
     });
     if (response.ok) {
