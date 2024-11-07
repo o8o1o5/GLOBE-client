@@ -1,7 +1,7 @@
-export default function NavUserInfo() {
+export default function NavUserInfo({ user }) {
   return (
     <div className="text-white font-notosanskr text-lg opacity-60">
-      촥촥한쵸코칩 [예시]
+      {user.userId}
     </div>
   );
 }

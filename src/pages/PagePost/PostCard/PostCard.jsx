@@ -20,15 +20,12 @@ export default function PostCard() {
   }, []);
 
   const handleTrashClick = async (e) => {
-    alert("지우기 기능은 핫픽스로 지워졌습니다 ㅇㅇ 수고");
-    {
-      /*e.preventDefault();
+    e.preventDefault();
     const response = await fetch(`${DOMAIN}/posts${queryString}`, {
       method: "DELETE",
     });
     if (response.ok) {
       window.location.href = "/";
-    }*/
     }
   };
 

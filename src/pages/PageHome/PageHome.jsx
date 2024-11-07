@@ -4,7 +4,7 @@ import Search from "./Search/Search.jsx";
 import LoginCard from "./LoginCard/LoginCard.jsx";
 import DOMAIN from "../../assets/resources/domain.js";
 
-export default function PageHome() {
+export default function PageHome({ setUser }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState([]);
@@ -71,7 +71,7 @@ export default function PageHome() {
           <PostPrev posts={searchedPosts} fetchPosts={fetchPosts}></PostPrev>
         </div>
         <div className="w-full lg:w-1/4">
-          <LoginCard></LoginCard>
+          <LoginCard setUser={setUser}></LoginCard>
         </div>
       </div>
 
